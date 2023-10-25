@@ -52,23 +52,8 @@ int main(void)
 	
     while (1) 
 		{
-			if (flag1==2)
-			{
-				LCD_GoTo(1,0);
-				LCD_WriteString("ADC=");
-				LCD_WriteNumber(read);
-				LCD_GoTo(2,0);
-				LCD_WriteString("VOLT=");
-				LCD_WriteNumber(volt);
-				flag1=0;
-			}
-		  if (DIO_ReadPin(PIND3)==0)
-		  {
-			  LCD_Clear();
-			  LCD_GoTo(0,0);
-			  LCD_WriteString("ExInterrupt_ADC");
-		  }
 			
+			segment_display_BCD(35);
 			
 		}
 		

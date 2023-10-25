@@ -21,10 +21,10 @@ void segment_display_BCD(u16 num)
 		u16 d3=num/1000;*/
 		
 		//turn off all Digit
-	/*	DIO_WritePin(PINA3,HIGH);
+		DIO_WritePin(PINA3,HIGH);
 		DIO_WritePin(PINA2,HIGH);
 		DIO_WritePin(PINB5,HIGH);
-		DIO_WritePin(PINB6,HIGH);*/
+		DIO_WritePin(PINB6,HIGH);
 		
 		
 		DIO_WritePin(PINA3,LOW);
