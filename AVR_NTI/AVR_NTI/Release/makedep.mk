@@ -16,3 +16,5 @@ MCAL\DIO\DIO_Program.c
 
 MCAL\EX_Interrupt\EX_Interrupt.c
 
+MCAL\Timer\Timer_Program.c
+

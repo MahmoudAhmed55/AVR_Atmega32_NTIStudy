@@ -15,45 +15,101 @@
 #include "Keypad_Interface.h"
 #include "EX_Interrupt_Interface.h"
 #include "ADC_Interface.h"
+#include "Timer_Interface.h"
 
- volatile u8 flag1=0,flag2=0;
+
+volatile u8 flag1=0,flag2=0;
 volatile u16 read=0,volt=0;
 
-void Interrupt_Code(void)
+
+/*void Ex_Interrupt(void)
 {
+	
 	flag1=1;
+}*/
+
+ISR(TIMER0_OVF_vect)
+{
+	static u8 c1,c2,c3;
+	
+	
+	DIO_TogglePin(PINB7);
+	c2++;
+	c3++;
+	if (c1==2)
+	{
+		DIO_TogglePin(PINA4);
+		c1=0;
+	}
+	if (c2==5)
+	{
+		DIO_TogglePin(PINA5);
+		c2=0;
+	}
+	if (c3==10)
+	{
+		DIO_TogglePin(PINA6);
+		c3=0;
+	}
+	
 }
 
-void ADC_Code(void)
+/*void ADC_Code(void)
 {
-	read=ADC_Read(CH_0);
+	if (flag1==0)
+	{
+		read=ADC_Read(CH_0);
+		DIO_TogglePin(PINC0);
+	}
+	else if (flag1==1)
+	{
+		read=ADC_Read(CH_1);
+	}
+	
 	volt=ADC_VoltRead(CH_0);
-	flag1=2;
-}
+	flag2=1;
+	
+}*/
 int main(void)
 {
 	sei();
 	DIO_Init();
-	EXI_Init();
 	LCD_Init();
+	EXI_Init();
+	TIMER0_Init(TIMER0_CTC_MODE,TIMER0_SCALER_64);
+	//EXI_Enable(EX_INT0);
 	ADC_Init(VREF_AVCC,ADC_SCALER_64);
 	ADC_InterruptEnable();
-	EXI_Enable(EX_INT0);
-	EXI_TriggerEdge(EX_INT0,RISING_EDGE);
-	ADC_AutoTriggered(External_Interrupt0_Request);
-	EXI_SetCallBack(EX_INT0,Interrupt_Code);
-	ADC_SetCallBack(ADC_Code);
+	TIMER0_OV_InterruptEnable();
 	
+	
+	//EXI_SetCallBack(EX_INT0,Ex_Interrupt);
+	ADC_AutoTriggered(Timer_Counter0_Overflow);
+	//ADC_SetCallBack(ADC_Code);
 	LCD_GoTo(0,0);
-	LCD_WriteString("ExInterrupt_ADC");
-	
+	LCD_WriteString("TIMER0_ADC");
+	OCR0=249;
 	
 	
 	
     while (1) 
 		{
+			/*if (flag1==0&&flag2==1)
+			{
+				LCD_GoTo(1,0);
+				LCD_WriteString("channel[0]=");
+				LCD_WriteNumber(read);
+				flag1=1&&flag2==1;
+			}
 			
-			segment_display_BCD(35);
+			if (flag1==1&&flag2==1)
+			{
+				LCD_GoTo(2,0);
+				LCD_WriteString("channel[1]=");
+				LCD_WriteNumber(read);
+				flag1=0;
+			}
+			*/
 			
 		}
 		
