@@ -6,7 +6,7 @@ MCAL/Timer/Timer_Program.d MCAL/Timer/Timer_Program.o: \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../MCAL/Timer/Timer_Interface.h
+ ../MCAL/Timer/Timer_Interface.h ../MCAL/Timer/Timer_Config.h
 
 ../Std_Types.h:
 
@@ -27,3 +27,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
 ../MCAL/Timer/Timer_Interface.h:
+
+../MCAL/Timer/Timer_Config.h:

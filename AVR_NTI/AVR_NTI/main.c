@@ -16,19 +16,19 @@
 #include "EX_Interrupt_Interface.h"
 #include "ADC_Interface.h"
 #include "Timer_Interface.h"
-
+#include "Timer_Config.h"
 
 volatile u8 flag1=0,flag2=0;
 volatile u16 read=0,volt=0;
 
 
-/*void Ex_Interrupt(void)
+void Ex_Interrupt(void)
 {
 	
 	flag1=1;
-}*/
+}
 
-ISR(TIMER0_OVF_vect)
+/*ISR(TIMER0_OVF_vect)
 {
 	static u8 c1,c2,c3;
 	
@@ -52,7 +52,7 @@ ISR(TIMER0_OVF_vect)
 		c3=0;
 	}
 	
-}
+}*/
 
 /*void ADC_Code(void)
 {
@@ -74,43 +74,24 @@ int main(void)
 {
 	sei();
 	DIO_Init();
+	KEYPAD_Init();
 	LCD_Init();
-	EXI_Init();
-	TIMER0_Init(TIMER0_CTC_MODE,TIMER0_SCALER_64);
+	//EXI_Init();
+	TIMER0_Init(TIMER0_PHASECORRECT_MODE,TIMER0_SCALER_64);
+	TIMER0_OC0Mode(OC0_INVERTING);
 	//EXI_Enable(EX_INT0);
-	ADC_Init(VREF_AVCC,ADC_SCALER_64);
-	ADC_InterruptEnable();
-	TIMER0_OV_InterruptEnable();
-	
-	
+	//ADC_Init(VREF_AVCC,ADC_SCALER_64);
+	//ADC_InterruptEnable();
+	//TIMER0_OV_InterruptEnable();
 	//EXI_SetCallBack(EX_INT0,Ex_Interrupt);
-	ADC_AutoTriggered(Timer_Counter0_Overflow);
+	//ADC_AutoTriggered(Timer_Counter0_Overflow);
 	//ADC_SetCallBack(ADC_Code);
 	LCD_GoTo(0,0);
-	LCD_WriteString("TIMER0_ADC");
-	OCR0=249;
-	
-	
-	
+	LCD_WriteString("TIMER0_KPAD_PIANO");
+	u8 y=0,x=0,z=0;
     while (1) 
 		{
-			/*if (flag1==0&&flag2==1)
-			{
-				LCD_GoTo(1,0);
-				LCD_WriteString("channel[0]=");
-				LCD_WriteNumber(read);
-				flag1=1&&flag2==1;
-			}
+			y=KEYBAD_GetKey();
 			
-			if (flag1==1&&flag2==1)
-			{
-				LCD_GoTo(2,0);
-				LCD_WriteString("channel[1]=");
-				LCD_WriteNumber(read);
-				flag1=0;
-			}
-			*/
-			
-		}
-		
+}
 }

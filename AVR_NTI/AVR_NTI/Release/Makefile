@@ -43,7 +43,8 @@ SUBDIRS :=  \
 ../MCAL/EX_Interrupt \
 ../MCAL/ADC \
 ../MCAL/Timer \
-../SERVICES
+../SERVICES \
+../SERVICES/Timer_Services
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
@@ -55,7 +56,8 @@ C_SRCS +=  \
 ../MCAL/ADC/ADC.c \
 ../MCAL/DIO/DIO_Program.c \
 ../MCAL/EX_Interrupt/EX_Interrupt.c \
-../MCAL/Timer/Timer_Program.c
+../MCAL/Timer/Timer_Program.c \
+../SERVICES/Timer_Services/Timer_Services.c
 
 
 PREPROCESSING_SRCS += 
@@ -72,7 +74,8 @@ main.o \
 MCAL/ADC/ADC.o \
 MCAL/DIO/DIO_Program.o \
 MCAL/EX_Interrupt/EX_Interrupt.o \
-MCAL/Timer/Timer_Program.o
+MCAL/Timer/Timer_Program.o \
+SERVICES/Timer_Services/Timer_Services.o
 
 OBJS_AS_ARGS +=  \
 HAL/7SEGMENT/7SEGMENT_Program.o \
@@ -82,7 +85,8 @@ main.o \
 MCAL/ADC/ADC.o \
 MCAL/DIO/DIO_Program.o \
 MCAL/EX_Interrupt/EX_Interrupt.o \
-MCAL/Timer/Timer_Program.o
+MCAL/Timer/Timer_Program.o \
+SERVICES/Timer_Services/Timer_Services.o
 
 C_DEPS +=  \
 HAL/7SEGMENT/7SEGMENT_Program.d \
@@ -92,7 +96,8 @@ main.d \
 MCAL/ADC/ADC.d \
 MCAL/DIO/DIO_Program.d \
 MCAL/EX_Interrupt/EX_Interrupt.d \
-MCAL/Timer/Timer_Program.d
+MCAL/Timer/Timer_Program.d \
+SERVICES/Timer_Services/Timer_Services.d
 
 C_DEPS_AS_ARGS +=  \
 HAL/7SEGMENT/7SEGMENT_Program.d \
@@ -102,7 +107,8 @@ main.d \
 MCAL/ADC/ADC.d \
 MCAL/DIO/DIO_Program.d \
 MCAL/EX_Interrupt/EX_Interrupt.d \
-MCAL/Timer/Timer_Program.d
+MCAL/Timer/Timer_Program.d \
+SERVICES/Timer_Services/Timer_Services.d
 
 OUTPUT_FILE_PATH +=AVR_NTI.elf
 
@@ -168,6 +174,13 @@ MCAL/EX_Interrupt/EX_Interrupt.o: ../MCAL/EX_Interrupt/EX_Interrupt.c
 	
 
 MCAL/Timer/Timer_Program.o: ../MCAL/Timer/Timer_Program.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL/DIO" -I".." -I"../HAL" -I"../HAL/LCD" -I"../HAL/Keypad" -I"../HAL/7SEGMENT" -I"../MCAL/EX_Interrupt" -I"../MCAL/ADC" -I"../MCAL/Timer"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+SERVICES/Timer_Services/Timer_Services.o: ../SERVICES/Timer_Services/Timer_Services.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../MCAL/DIO" -I".." -I"../HAL" -I"../HAL/LCD" -I"../HAL/Keypad" -I"../HAL/7SEGMENT" -I"../MCAL/EX_Interrupt" -I"../MCAL/ADC" -I"../MCAL/Timer"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=atmega32 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

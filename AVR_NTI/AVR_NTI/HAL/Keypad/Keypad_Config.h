@@ -14,11 +14,16 @@
 
 #if KEYPAD_PRG
 
-const u8 KeysArr[Rows][Cols]={{'7','8','9','/'}
+/*const u8 KeysArr[Rows][Cols]={{'7','8','9','/'}
                              ,{'4','5','6','*'}
                              ,{'1','2','3','-'}
-                             ,{'c','0','=','+'}};
+                             ,{'c','0','=','+'}};*/
 
+
+const u8 KeysArr[Rows][Cols]={{20,40,60,80}
+                             ,{100,120,140,160}
+                             ,{180,200,220,240}
+                             ,{255,0,10,65}};
 #endif
 
 #define FIRST_OUTPUT  PINC2

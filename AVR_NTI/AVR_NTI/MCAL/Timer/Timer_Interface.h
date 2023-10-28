@@ -13,6 +13,10 @@
 #include "Utils.h"
 #include "MemMap.h"
 
+
+
+
+
 typedef enum{
 	TIMER0_STOP=0,
 	TIMER0_SCALER_1,
@@ -51,6 +55,10 @@ void TIMER0_OV_InterruptDisable(void);
 void TIMER0_OC_InterruptEnable(void);
 void TIMER0_OC_InterruptDisable(void);
 void TIMER0_OV_SetCallBack(void(*local_fptr)(void));
+
+void Timer_Delayms(u16 time);
+void Timer_GetOCR0(u8 duty,OC0Mode_type mode);
+u8 Timer_GetDuty(u8 ocr0,OC0Mode_type mode);
 
 /*********************************************************************************************************/
 

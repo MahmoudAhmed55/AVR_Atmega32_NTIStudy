@@ -23,7 +23,7 @@
 	OUTPUT,      /* Port B Pin 0   / */
 	OUTPUT,      /* Port B Pin 1   /*/
 	OUTPUT,		 /* Port B Pin 2 / INT2*/
-	INPULL,		 /* Port B Pin 3   /OC0*/
+	OUTPUT,		 /* Port B Pin 3   /OC0*/
 	OUTPUT,		 /* Port B Pin 4 /ss*/
 	OUTPUT,		 /* Port B Pin 5 //mosi*/
 	OUTPUT,		 /* Port B Pin 6 /miso*/

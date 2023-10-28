@@ -20,8 +20,6 @@ void KEYPAD_Init(void)
 	{
 		DIO_WritePin(FIRST_OUTPUT+r,HIGH);
 	}
-	
-	
 }
 
 u8 KEYBAD_GetKey(void)

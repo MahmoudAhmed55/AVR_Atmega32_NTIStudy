@@ -8,7 +8,7 @@
 #include "MemMap.h"
 #include "Utils.h"
 #include "Timer_Interface.h"
-
+#include "Timer_Config.h"
 /*************************Pointer to functions to be assigned to ISR*********************************/
 
 static void (*Timer1_OVF_Fptr) (void)=NULLPTR;
@@ -63,6 +63,56 @@ void TIMER0_OC0Mode(OC0Mode_type mode)
 		SET_BIT(TCCR0,COM01);
 		break;
 	}
+}
+
+void Timer_Delayms(u16 time) // this function for 16M CPU Cristal
+{
+	
+	u16 total_iteration=time*4;
+	u16 c=0;
+	TCNT0=0;
+	while(c<=total_iteration)
+	{
+		while(TCNT0>0);
+		
+			c++;
+	}
+	
+}
+
+void Timer_GetOCR0(u8 duty,OC0Mode_type mode)
+{
+	u8 x=0;
+	if (mode==OC0_NON_INVERTING)
+	{
+		x=(duty*255)/100;
+	}
+	
+	else if (mode==OC0_INVERTING)
+	{
+		x=256-((duty*255)/100);
+		x=256-x;
+	}
+	
+	OCR0_Write(x);
+}
+
+u8 Timer_GetDuty(u8 ocr0,OC0Mode_type mode)
+{
+	u8 duty=0;
+	if (mode==OC0_NON_INVERTING)
+	{
+		duty=(ocr0*100)/255;
+	}
+	
+	else if (mode==OC0_INVERTING)
+	{
+		
+		duty=(25500-(100*ocr0))/255;
+		duty=100-duty;
+	}
+	
+	return duty;
 }
 
 void TIMER0_OV_InterruptEnable(void)
