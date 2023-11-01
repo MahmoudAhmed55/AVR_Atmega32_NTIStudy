@@ -16,7 +16,15 @@ MCAL\DIO\DIO_Program.c
 
 MCAL\EX_Interrupt\EX_Interrupt.c
 
+MCAL\SPI\SPI_Program.c
+
 MCAL\Timer\Timer_Program.c
 
+MCAL\UART\UART_Program.c
+
+SERVICES\SPI_Services\SPI_Services.c
+
 SERVICES\Timer_Services\Timer_Services.c
+
+SERVICES\UART_Services\UART_Services.c
 

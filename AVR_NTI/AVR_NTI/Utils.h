@@ -16,7 +16,7 @@
 
 #define CONC_BYTE(b7,b6,b5,b4,b3,b2,b1,b0)    0b##b7##b6##b5##b4##b3##b2##b1##b0   //concatenation_config_for_byte
 
-#define F_CPU  16000000     //cpu_cristal
+#define F_CPU  8000000     //cpu_cristal
 
 #include <util/delay.h>   // delay_library
 

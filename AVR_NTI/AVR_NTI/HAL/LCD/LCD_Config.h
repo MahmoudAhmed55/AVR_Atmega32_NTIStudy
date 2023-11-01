@@ -9,18 +9,18 @@
 #define LCD_CONFIG_H_
 
 #define LCD_PORT  PA
-#define RS        PINA3	
-#define EN        PINA2
+#define RS        PINA4	
+#define EN        PINA5
 
 #define _8_BIT    1
 #define _4_BIT    0
 
 #define LCD_MODE  _4_BIT
 
-#define D4  PINB0
-#define D5  PINB1
-#define D6  PINB2
-#define D7  PINB4
+#define D4  PINA0
+#define D5  PINA1
+#define D6  PINA2
+#define D7  PINA3
 
 
 #endif /* LCD_CONFIG_H_ */

@@ -22,5 +22,4 @@ void PWM_Measure(u32* Pfreq,u8* Pduty,u32 timeout);
 void PWM_Measure2(u32* Pfreq,u8* Pduty);
 
 
-
 #endif /* TIMER_SERVICES_H_ */
